@@ -9,7 +9,7 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 ## Features
 - Load any image and convert it's colors to the selected palette (using closest color algorithm)
 - Two images displayed: the original image and the image converted to the current palette on the sidebar
-- Independently resize each image using the anchor on the bottom right of each image window (Does not effect output scale)
+- Independently resize each image using the anchor on the bottom right of each image window (Does not affect output scale)
 - Drag and reposition each image window by dragging the top 'bar'
 - Change the palette by selecting a preset from the dropdown or manually set any color using the color pickers to the left
 - Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette (for importing custom palettes)
