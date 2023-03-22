@@ -158,7 +158,6 @@ function init() {
   //Image Widget (Original Image)
   img_window = new DraggableWindow();
   img_window.win_drag_bar.innerText = 'Input';
-  // img_window.draggableDiv.style.left = '350px';
   img_window.draggableDiv.style.top = '15px';
   fileInput.addEventListener('change', (event) => {
     load_window.style.display = 'block';
@@ -168,7 +167,6 @@ function init() {
       reader.onload = (e) => {
         img_window.setImageSrc(e.target.result);
         img_window.win_drag_bar.innerText = 'Input - ' + file.name;
-        //Need to set the output_win.win_drag_bar.innerText here
         imgCopy = new Image();
         imgCopy.onload = () => {
           recolor_output_image();
@@ -204,23 +202,19 @@ function init() {
     let chars = 0;
     const outputImageElement = getImageElementFromWindow(output_window);
     const width = outputImageElement.naturalWidth;
-    const height = outputImageElement.naturalHeight;
-  
+    const height = outputImageElement.naturalHeight;  
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = width;
     tempCanvas.height = height;
     const tempCtx = tempCanvas.getContext('2d');
-    tempCtx.drawImage(outputImageElement, 0, 0, width, height);
-  
+    tempCtx.drawImage(outputImageElement, 0, 0, width, height);  
     const imageData = tempCtx.getImageData(0, 0, width, height);
-    const pixelData = imageData.data;
-  
+    const pixelData = imageData.data;  
     let outputString = 'output_img = [';
     for (let i = 0; i < pixelData.length; i += 4) {
       const r = pixelData[i];
       const g = pixelData[i + 1];
-      const b = pixelData[i + 2];
-  
+      const b = pixelData[i + 2];  
       const pixelColor = `rgb(${r}, ${g}, ${b})`;
       const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());      
       chars++;
@@ -351,43 +345,33 @@ function outputProcessedImg() {
   const width = outputImageElement.naturalWidth;
   const height = outputImageElement.naturalHeight;
   try {
-    // some code that may throw an error
     if (width > 128 || height > 128) {
       throw new Error("Error: Max output size is 128x128");
     }
   } catch (error) {
-    // code to handle the error
     alert(error.message);
     lw_text.innerHTML = 'Loading...';
     load_window.style.display = 'none';
     return
   }
-
   const tileWidth = 8;
   const tileHeight = 8;
   const sectionsPerRow = Math.ceil(width / tileWidth);
   const sectionsPerCol = Math.ceil(height / tileHeight);
-  const tilemapWidth = 16; // Tilemap width in sprites (8x8)
+  const tilemapWidth = 16;
   let output = '';
-
-  // Create a canvas to get pixel data
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
   const context = canvas.getContext('2d');
   context.drawImage(outputImageElement, 0, 0, width, height);
-
   for (let row = 0; row < sectionsPerCol; row++) {
     for (let col = 0; col < sectionsPerRow; col++) {
       const x = col * tileWidth;
       const y = row * tileHeight;
-
-      // Calculate the tile index based on the tilemap width
       const tileIndex = row * tilemapWidth + col;
       const tileIndexStr = tileIndex.toString().padStart(3, '0');
-
       output += `-- ${tileIndexStr}:`;
-
       for (let i = 0; i < tileHeight; i++) {
         for (let j = 0; j < tileWidth; j++) {
           const pixelX = x + j;
@@ -395,18 +379,13 @@ function outputProcessedImg() {
           if (pixelX >= width || pixelY >= height) {
             output += '0';
           } else {
-            // Get pixel color
             const imageData = context.getImageData(pixelX, pixelY, 1, 1);
             const pixelColor = `rgb(${imageData.data[0]}, ${imageData.data[1]}, ${imageData.data[2]})`;
-
-            // Find the palette index for the pixel color
             const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());
-
             output += paletteIndex.toString(16);
           }
         }
       }
-
       output += '\n';
     }
   }
