@@ -26,8 +26,7 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 - App starts the tile/sprite index at 255 (sprite page) and keeps the tiles in order (viewed from sprite editor) unless > 128x128
 - * See example images below
 
-![sprite_data_example_github](https://user-images.githubusercontent.com/25288625/227039474-640ffa82-899f-444c-97f3-c10caab619a1.PNG)
-
+![sprite_data_example_github](https://user-images.githubusercontent.com/25288625/227044658-81c94e91-8593-4e9a-a7a3-2b83bdaaf24f.PNG)
 
 ## Output
 - Paste the sprite data between the two `<SPRITES> </SPRITES>` tags in your TIC-80 file, and reload your file to see the converted sprites.
