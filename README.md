@@ -1,18 +1,36 @@
 # Pic-2-Tic
-A web-app designed specifically to convert images for use with the tic80 fantasy console. 
 
-The project is still a WIP, and once it's finished I plan on packaging a standalone version, perhaps with electron or nw.js.
-For now you can run the app by using vs-code, and the plugin https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
-More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I welcome any criticism/input/pull requests however, so feel free to contribute if inclined.
+A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but once it's finished, a standalone version will be packaged, perhaps with Electron or NW.js.
+
+For now, you can run the app by using VS Code and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I welcome any criticism/input/pull requests, so feel free to contribute if inclined.
 
 ![image](https://user-images.githubusercontent.com/25288625/227027839-fca3cd29-7825-4be3-9474-2f851ca1612d.png)
 
-Start by loading an image, and you will see a brief 'Loading...' overlay followed by 'Processing...'. Once loaded and processed, you will see two images displayed, the original image, and the image converted to current palette on the sidebar. You can independantly resize each image using the anchor on the bottom right of each image window. You can also drag and reposition each image window by dragging the top 'bar'. 
+## Features
+- Load any image and convert it's colors to the selected palette (using closest color algorithm)
+- Two images displayed: the original image and the image converted to the current palette on the sidebar
+- Independently resize each image using the anchor on the bottom right of each image window (Does not effect output scale)
+- Drag and reposition each image window by dragging the top 'bar'
+- Change the palette by selecting a preset from the dropdown or manually set any color using the color pickers to the left
+- Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette
+- 'Processing...' overlay covers the screen during processing to prevent excessive calculations
 
-To change the palette, select a preset from the dropdown, or manually set any color using the color pickers to the left. You can also paste a hex string ("palette key" lets call it, which is the tic80 palette string format) into the text box below the preset-dropdown. You have to hit ENTER after pasting the palette key, and the app will update the palette accordingly. Additionally, when selecting a preset palette from the dropdown, the corresponding palette key is pasted into the text box below. (This doesn not update when manually changing the colors however, that is a WIP feature) The 'palette key' is a 96-character string where each 6 digits (0-F) represent a palette color, so 6x16 colors = 96 characters. When changing palettes, or manually changing one of the color pickers, the current palette is adjusted, and the output image is re-processed with the new palette color/s. The 'Processing...' overlay will cover the screen during processing to prevent excessive calculations (mainly an issue when drag-selecting a color from the color-picker widget)
+## Copy Sprite Data
+- Splits the image into 8x8 sprites and copies to your clipboard, in TIC-80 sprite format
+- Clipboard contains all of the sprites, properly separated with '\n'
+- Specify the start/offset tile index with regards to the output data (WIP feature)
+- App starts the tile/sprite index at 255 (sprite page) and keeps the tiles in order (viewed from sprite editor) unless > 128x128
+- * See example images below
 
-The 'copy sprite data' button works by splitting the image up into 8x8 chunks, and outputting 1 string for each chunk, containing the tile index and pixel data (tic80 sprite format). The clipboard will contain all of the chunks, properly seperated with '\n'. I am working on a feature where you can specify the start/offset tile index with regards to the output data. Otherwise, the app starts the tile/sprite index at 255 (sprite page), and will properly keep the tiles in order, (given the input image is 128x128 pixels or less, or 16x16 tiles/sprites) This way when you paste the sprite data into your tic80 script, the image will remain intact with respect to how the sprites appear within the tic80 sprite editor.
+![sprite_data_example_github](https://user-images.githubusercontent.com/25288625/227039474-640ffa82-899f-444c-97f3-c10caab619a1.PNG)
 
-Below is the result of clicking the 'copy sprite data' button, and then pasting the string between the two <SPRITES> </SPRITES> tags in your tic-80 file.
- 
+
+## Output
+- Paste the sprite data between the two `<SPRITES> </SPRITES>` tags in your TIC-80 file, and reload your file to see the converted sprites.
+
 ![image](https://user-images.githubusercontent.com/25288625/227029707-522adcec-e08e-4416-926e-c6abdc1f8434.png)
+
+## Copy Pixel Data
+- Similar to above function, except it outputs a 1-dimensional table of all the pixels (converted to palette indices)
+- For drawing arbitrary sized images, 240x136 or smaller. (possibly larger using panning?)
+- Accompanied by a drawing function to draw each pixel to the screen using pix() (WIP Feature)
