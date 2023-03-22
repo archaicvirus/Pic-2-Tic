@@ -2,7 +2,7 @@
 
 A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but once it's finished, a standalone version will be packaged, perhaps with Electron or NW.js.
 
-For now, you can run the app by using VS Code and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I welcome any criticism/input/pull requests, so feel free to contribute if inclined.
+For now, you can run the app by using VS Code and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I only made this tool for a personal need I have developing 'Craptorio' a factorio de-make for the tic80, however it occured to me that this could be useful to other tic80 devs. I welcome any criticism/input/pull requests, so feel free to contribute if so inclined.
 
 ![image](https://user-images.githubusercontent.com/25288625/227027839-fca3cd29-7825-4be3-9474-2f851ca1612d.png)
 
@@ -12,8 +12,12 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 - Independently resize each image using the anchor on the bottom right of each image window (Does not effect output scale)
 - Drag and reposition each image window by dragging the top 'bar'
 - Change the palette by selecting a preset from the dropdown or manually set any color using the color pickers to the left
-- Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette
-- 'Processing...' overlay covers the screen during processing to prevent excessive calculations
+- Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette (for importing custom palettes)
+- Palette key is a 96-character string where each 6 digits (0-F) represent a palette color (6x16 colors = 96 characters)
+- Invalid palette strings are ignored, keeping the current palette.
+- Output image is updated with new palette when any palette color changes
+- When output image is re-colored, ORIGINAL image is used for closest color to new palette
+- 'Processing...' overlay covers the screen during processing to prevent excessive calculations (mainly when drag-selecting colors within the color-picker widgets)
 
 ## Copy Sprite Data
 - Splits the image into 8x8 sprites and copies to your clipboard, in TIC-80 sprite format
@@ -34,3 +38,7 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 - Similar to above function, except it outputs a 1-dimensional table of all the pixels (converted to palette indices)
 - For drawing arbitrary sized images, 240x136 or smaller. (possibly larger using panning?)
 - Accompanied by a drawing function to draw each pixel to the screen using pix() (WIP Feature)
+
+
+## Side Notes...
+- 
