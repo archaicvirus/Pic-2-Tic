@@ -41,4 +41,7 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 
 
 ## Side Notes...
-- 
+- The program is not 100% complete, so expect possible bugs (although I haven't found any major ones testing)
+- Note the features (WIP feature) at the end are not finished...
+- The copy pixel data button works fine, but for now you will have to write your own function to use pix() to draw each pixel using the output data.
+- Please, any feature/s you would like, open a discussion or pull request, or message me in the tic80 discord and I will consider implementing them.
