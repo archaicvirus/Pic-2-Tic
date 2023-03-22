@@ -12,6 +12,7 @@ For now, you can run the app by using VS Code and the [Live Server plugin](https
 - Independently resize each image using the anchor on the bottom right of each image window (Does not affect output scale)
 - Drag and reposition each image window by dragging the top 'bar'
 - Change the palette by selecting a preset from the dropdown or manually set any color using the color pickers to the left
+- Selected palette key is output to the text box below, you can copy this and paste directly into the tic80 editor (sprite editor > advanced mode > edit palette > paste
 - Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette (for importing custom palettes)
 - Palette key is a 96-character string where each 6 digits (0-F) represent a palette color (6x16 colors = 96 characters)
 - Invalid palette strings are ignored, keeping the current palette.
