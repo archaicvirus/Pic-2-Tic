@@ -1,6 +1,6 @@
 # Pic-2-Tic
 
-A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but once it's finished, a standalone version will be packaged, perhaps with Electron or NW.js.
+A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but its fully usable and all main features work fine. After some polishing/small bug fixes, a standalone version will be packaged, perhaps with Electron or NW.js.
 
 For now, you can run the app by using VS Code and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I only made this tool for a personal need I have developing 'Craptorio' a factorio de-make for the tic80, however it occured to me that this could be useful to other tic80 devs. I welcome any criticism/input/pull requests, so feel free to contribute if so inclined.
 
