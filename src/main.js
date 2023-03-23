@@ -10,7 +10,13 @@ const colors = {
   'TIC-80': '1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57',
   'PICO-8': '0000001d2b537e255383769cab5236008751ff004d5f574fff77a8ffa300c2c3c700e436ffccaa29adffffec27fff1e8',
   'MSWIN/IBM OS/2': '000000800000008000808000000080800080008080c0c0c0808080ff000000ff00ffff000000ffff00ff00ffffffffff',
-  'APPLE MAC': 'fffffffbf305ff6403dd0907f208844700a50000d302abea1fb714006412562c0590713ac0c0c0808080404040000000'
+  'APPLE MAC': 'fffffffbf305ff6403dd0907f208844700a50000d302abea1fb714006412562c0590713ac0c0c0808080404040000000',
+  'Cyberpunk': '2a213dff94008c00ffa600f9ff00ccff006600ff2a00ff1a1a1a5500ff00ffaa00aaff002aff00ffff005e5e5e5e5e5e',
+  'Autumn Bliss': '4b29007d3a00af4b00e25c00ff6e00ff8000ff923affa454ff7e7e007e7e0000ff0000ff5e5e5e5e5e5e5e5e5e5e5e5e',
+  'Morning Haze': '3d3d3d6e6e6e9f9f9fcfcfcfedededffffffd9d9d9b2b2b28484840052521a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a',
+  'Soothing Sea': '005757005f6e00848400a9a900cfcf00e5e5f5f5f5d9d9d9bdbdbda1a1a184848400666e004b4b1a1a1a1a1a1a1a1a1a',
+  'Vibrant Jungle': '2626004c4d003d3dff2e2eff1c1cff0000ff0000ff005200ff5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e',
+  'Midnight Sky': '1a1a1a3434344e4e4e6868688282829c9c9cb6b6b6d0d0d0eaeaeaffffffff5252521a1a1a1a1a1a1a1a1a1a1a1a1a1a',
 };
 
 function set_initial_palette() {
@@ -202,26 +208,26 @@ function init() {
     let chars = 0;
     const outputImageElement = getImageElementFromWindow(output_window);
     const width = outputImageElement.naturalWidth;
-    const height = outputImageElement.naturalHeight;  
+    const height = outputImageElement.naturalHeight;
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = width;
     tempCanvas.height = height;
     const tempCtx = tempCanvas.getContext('2d');
-    tempCtx.drawImage(outputImageElement, 0, 0, width, height);  
+    tempCtx.drawImage(outputImageElement, 0, 0, width, height);
     const imageData = tempCtx.getImageData(0, 0, width, height);
-    const pixelData = imageData.data;  
+    const pixelData = imageData.data;
     let outputString = 'output_img = [';
     for (let i = 0; i < pixelData.length; i += 4) {
       const r = pixelData[i];
       const g = pixelData[i + 1];
-      const b = pixelData[i + 2];  
+      const b = pixelData[i + 2];
       const pixelColor = `rgb(${r}, ${g}, ${b})`;
-      const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());      
+      const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());
       chars++;
       if (i > 3) {
         outputString += ',';
       }
-  
+
       //outputString += paletteIndex.toString(16);
       outputString += paletteIndex;
       if (chars % 100 === 0) {
