@@ -12,11 +12,12 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ## Features
 - Load any image and convert it's colors to the selected palette (using closest color algorithm)
-- Two images displayed: the original image and the image converted to the current palette on the sidebar
-- Independently resize each image using the anchor on the bottom right of each image window (Does not affect output scale)
-- Drag and reposition each image window by dragging the top 'bar'
-- Change the palette by selecting a preset from the dropdown or manually set any color using the color pickers to the left
-- Selected palette key is output to the text box below, you can copy this and paste directly into the tic80 editor (sprite editor > advanced mode > edit palette > paste)
+- Displays both original and converted images
+- Resize images using the anchor on the bottom right of each widget (Does not affect output scale)
+- Drag and reposition image widget by dragging the top 'bar'
+- Palette presets, contained in bottom dropdown widget.
+- Create a new palette by clicking on the color pickers
+- Current palette is output to the text box below, you can copy this and paste directly into the tic80 editor (sprite editor > advanced mode > edit palette > paste)
 - Paste a hex string ("palette key") into the text box below the preset-dropdown and press ENTER to update the palette (for importing custom palettes)
 - Palette key is a 96-character string where each 6 digits (0-F) represent a palette color (6x16 colors = 96 characters)
 - Invalid palette strings are ignored, keeping the current palette.
