@@ -2,7 +2,11 @@
 
 A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but its fully usable and all main features work fine. After some polishing/small bug fixes, a standalone version will be packaged, perhaps with Electron or NW.js.
 
-For now, you can run the app by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. I only made this tool for a personal need I have developing 'Craptorio' a factorio de-make for the tic80, however it occured to me that this could be useful to other tic80 devs. I welcome any criticism/input/pull requests, so feel free to contribute if so inclined.
+## To run the app
+- For now, you can run the app by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
+- If you have never used vs code or the live server plugin, after installing both, clone the src folder, open the folder with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will pop open a new tab in your default browser and run the app. 
+- More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. 
+- I only made this tool for a personal need I have developing 'Craptorio' a factorio de-make for the tic80, however it occured to me that this could be useful to other tic80 devs. I welcome any criticism/input/pull requests, so feel free to contribute if so inclined.
 
 ![image](https://user-images.githubusercontent.com/25288625/227027839-fca3cd29-7825-4be3-9474-2f851ca1612d.png)
 
@@ -43,6 +47,7 @@ For now, you can run the app by using [VS Code](https://visualstudio.microsoft.c
 ![pixel_data_output_example](https://user-images.githubusercontent.com/25288625/227093468-c9096f79-0925-4798-9122-d54438cc5c6e.PNG)
 
 ## Side Notes...
+- I have only tested this with .png .jpeg and .bmp image formats.
 - The program is not 100% complete, so expect possible bugs (although I haven't found any major ones testing)
 - Note the features (WIP feature) at the end are not finished...
 - The copy pixel data button works fine, but for now you will have to write your own function to use pix() to draw each pixel using the output data.
