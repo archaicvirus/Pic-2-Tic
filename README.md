@@ -6,6 +6,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 - For now, you can run the app by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
 - If you have never used vs code or the live server plugin, after installing both, clone the src folder, open the folder with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will pop open a new tab in your default browser and run the app. 
 - More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. 
+- No 3rd party libs, written in pure javascript, html, and css.
 - I only made this tool for a personal need I have developing 'Craptorio' a factorio de-make for the tic80, however it occured to me that this could be useful to other tic80 devs. I welcome any criticism/input/pull requests, so feel free to contribute if so inclined.
 
 ![image](https://user-images.githubusercontent.com/25288625/227027839-fca3cd29-7825-4be3-9474-2f851ca1612d.png)
