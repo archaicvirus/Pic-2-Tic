@@ -42,7 +42,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ## Copy Pixel Data
 - Similar to above function, except it outputs a 1-dimensional table of all the pixels (converted to palette indices)
-- For drawing arbitrary sized images, 240x136 or smaller (tic80 screen size). It will still output larger images though.
+- For drawing arbitrary sized images, 240x136 or smaller (tic80 screen size). It will still output larger images, though it is really slow due to sub-optimal routines (bad code)
 - Accompanied by a drawing function to draw each pixel to the screen using pix() (WIP Feature)
 - Example pixel data export below
 
