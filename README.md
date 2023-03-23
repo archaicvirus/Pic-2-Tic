@@ -36,9 +36,11 @@ For now, you can run the app by using [VS Code](https://visualstudio.microsoft.c
 
 ## Copy Pixel Data
 - Similar to above function, except it outputs a 1-dimensional table of all the pixels (converted to palette indices)
-- For drawing arbitrary sized images, 240x136 or smaller. (possibly larger using panning?)
+- For drawing arbitrary sized images, 240x136 or smaller (tic80 screen size). It will still output larger images though.
 - Accompanied by a drawing function to draw each pixel to the screen using pix() (WIP Feature)
+- Example pixel data export below
 
+![pixel_data_output_example](https://user-images.githubusercontent.com/25288625/227093468-c9096f79-0925-4798-9122-d54438cc5c6e.PNG)
 
 ## Side Notes...
 - The program is not 100% complete, so expect possible bugs (although I haven't found any major ones testing)
