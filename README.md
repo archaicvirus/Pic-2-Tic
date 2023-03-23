@@ -28,7 +28,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ## Copy Sprite Data
 - Splits the image into 8x8 sprites and copies to your clipboard, in TIC-80 sprite format
-- Clipboard contains all of the sprites, properly separated with '\n'
+- Clipboard contains all of the sprites, you can ctrl + v them into your editor of choice
 - Specify the start/offset tile index with regards to the output data (WIP feature)
 - App starts the tile/sprite index at 000 and keeps the tiles in order (viewed from sprite editor) unless > 128x128px
 - * See example images below
