@@ -27,6 +27,12 @@ const colors = {
   'Vintage Charm': '8b4513cd853fbc8f8ff4a460d2691edeb887ffdeadbdb76b8b008b9932cc9400d38000805e5e5e5e5e5d5e5e5c5e5e5b',
   'Electric Avenue': 'ff1493ff69b4ee82eeba55d3da70d6c71585db7093ff00ffee00eecd00cd8b008b9400d35e5e5e5e5e5d5e5e5c5e5e5b',
   'Arctic Chill': '00ffff40e0d048d1cc00ced120b2aa5f9ea04682b487cefaadd8e61e90ff5e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e59',
+  'Golden Hour': 'ffcc00ffdb58ffaa00ffd700ffc125ffa500ff8c00ffa07acdad00eead0e8b69145e5e5e5e5e5d5e5e5c5e5e5b5e5e5a',
+  'Cosmic Dust': '6a5acd7b68ee483d8b9370db8a2be24b00827f00ffda70d6ba55d39932cc8b008b9400d35e5e5e5e5e5d5e5e5c5e5e5b',
+  'Forest Whisper': '228b220064002e8b5732cd323cb3718fbc8f9acd32adff2f7cfc007fff005e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e59',
+  'Smoky Quartz': 'a0522d8b4513cd853fd2691edeb887ee9a00f28500ffa07a5e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
+  'Neon Lights': '00ffff00ff00ff00ffffff00ff4500ff1493ee82eeba55d35e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
+  'Autumn Harvest': '8b0000a52a2ab22222cd5c5cdc143cff6347ff7f50ff45005e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
 };
 
 function set_initial_palette() {
@@ -160,6 +166,7 @@ function init() {
   palette_list.addEventListener('change', (event) => {
     const selectedColor = colors[event.target.value];
     textInput.value = selectedColor;
+    load_window.style.display = 'block';
     parsePalette();
   });
   sidebar.appendChild(palette_list);
@@ -220,7 +227,7 @@ function init() {
   output_window.contentDiv.addEventListener('resize', onWindowResize.bind(output_window));
 }
 
-function get_pixel_data(){
+function get_pixel_data() {
   let chars = 0;
   const outputImageElement = getImageElementFromWindow(output_window);
   const width = outputImageElement.naturalWidth;
@@ -268,9 +275,7 @@ function recolor_output_image() {
     return
   }
   processing = true;
-  if (load_window.style.display === 'none') {
-    load_window.style.display = 'block';
-  }
+  load_window.style.display = 'block';
   lw_text.innerHTML = 'Processing Image...';
   const imgElement = img_window.contentDiv.querySelector('img');
   if (imgElement) {
