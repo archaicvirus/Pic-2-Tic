@@ -214,47 +214,48 @@ function init() {
   pixel_data_button.classList.add('output-button');
   pixel_data_button.innerHTML = 'Copy Pixel Data';
   sidebar.appendChild(pixel_data_button); ''
-  pixel_data_button.addEventListener('click', () => {
-    let chars = 0;
-    const outputImageElement = getImageElementFromWindow(output_window);
-    const width = outputImageElement.naturalWidth;
-    const height = outputImageElement.naturalHeight;
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = width;
-    tempCanvas.height = height;
-    const tempCtx = tempCanvas.getContext('2d');
-    tempCtx.drawImage(outputImageElement, 0, 0, width, height);
-    const imageData = tempCtx.getImageData(0, 0, width, height);
-    const pixelData = imageData.data;
-    let outputString = 'output_img = [';
-    for (let i = 0; i < pixelData.length; i += 4) {
-      const r = pixelData[i];
-      const g = pixelData[i + 1];
-      const b = pixelData[i + 2];
-      const pixelColor = `rgb(${r}, ${g}, ${b})`;
-      const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());
-      chars++;
-      if (i > 3) {
-        outputString += ',';
-      }
-
-      //outputString += paletteIndex.toString(16);
-      outputString += paletteIndex;
-      if (chars % 100 === 0) {
-        outputString += '\n';
-      }
-    }
-    outputString += '];';
-    navigator.clipboard.writeText(outputString).then(function () {
-      console.log('Pixel data copied to clipboard successfully!');
-    }).catch(function (err) {
-      console.error('Could not copy pixel data to clipboard:', err);
-    });
-  });
-
+  pixel_data_button.addEventListener('click', get_pixel_data);
   set_initial_palette();
   img_window.contentDiv.addEventListener('resize', onWindowResize.bind(img_window));
   output_window.contentDiv.addEventListener('resize', onWindowResize.bind(output_window));
+}
+
+function get_pixel_data(){
+  let chars = 0;
+  const outputImageElement = getImageElementFromWindow(output_window);
+  const width = outputImageElement.naturalWidth;
+  const height = outputImageElement.naturalHeight;
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = width;
+  tempCanvas.height = height;
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.drawImage(outputImageElement, 0, 0, width, height);
+  const imageData = tempCtx.getImageData(0, 0, width, height);
+  const pixelData = imageData.data;
+  let outputString = 'output_img = [';
+  for (let i = 0; i < pixelData.length; i += 4) {
+    const r = pixelData[i];
+    const g = pixelData[i + 1];
+    const b = pixelData[i + 2];
+    const pixelColor = `rgb(${r}, ${g}, ${b})`;
+    const paletteIndex = paletteColors.findIndex((color) => color.toUpperCase() === rgbToHex(pixelColor).toUpperCase());
+    chars++;
+    if (i > 3) {
+      outputString += ',';
+    }
+
+    //outputString += paletteIndex.toString(16);
+    outputString += paletteIndex;
+    if (chars % 100 === 0) {
+      outputString += '\n';
+    }
+  }
+  outputString += '];';
+  navigator.clipboard.writeText(outputString).then(function () {
+    console.log('Pixel data copied to clipboard successfully!');
+  }).catch(function (err) {
+    console.error('Could not copy pixel data to clipboard:', err);
+  });
 }
 
 function updateScale() {
@@ -298,7 +299,7 @@ function recolor_output_image() {
       output_window.setImageSrc(processedImage.src);
       const currentScale = parseFloat(slider.value);
       output_window.updateScale(currentScale);
-      sprite_data = outputProcessedImg();
+      sprite_data = get_sprite_data();
       load_window.style.display = 'none';
       lw_text.innerHTML = 'Loading...';
       processing = false;
@@ -356,13 +357,14 @@ function getImageElementFromWindow(windowObj) {
   return windowObj.contentDiv.querySelector('img');
 }
 
-function outputProcessedImg() {
+function get_sprite_data() {
   const outputImageElement = getImageElementFromWindow(output_window);
   const width = outputImageElement.naturalWidth;
   const height = outputImageElement.naturalHeight;
   try {
     if (width > 128 || height > 128) {
-      throw new Error("Error: Max output size is 128x128");
+      //sprite_data = 'image'
+      throw new Error("Warning: Images larger than 128x128 will take much longer to process sprite data!");
     }
   } catch (error) {
     alert(error.message);
