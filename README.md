@@ -24,7 +24,7 @@ For now, you can run the app by using [VS Code](https://visualstudio.microsoft.c
 - Splits the image into 8x8 sprites and copies to your clipboard, in TIC-80 sprite format
 - Clipboard contains all of the sprites, properly separated with '\n'
 - Specify the start/offset tile index with regards to the output data (WIP feature)
-- App starts the tile/sprite index at 255 (sprite page) and keeps the tiles in order (viewed from sprite editor) unless > 128x128
+- App starts the tile/sprite index at 000 and keeps the tiles in order (viewed from sprite editor) unless > 128x128px
 - * See example images below
 
 ![sprite_data_example_github](https://user-images.githubusercontent.com/25288625/227044658-81c94e91-8593-4e9a-a7a3-2b83bdaaf24f.PNG)
