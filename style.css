@@ -1,6 +1,6 @@
 @font-face {
   font-family: MyOldFont;
-  src: url('fonts/test.woff') format('woff');
+  src: url('test.woff') format('woff');
 }
 
 body {
