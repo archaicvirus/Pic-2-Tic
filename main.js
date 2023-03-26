@@ -167,8 +167,11 @@ function init() {
   palette_list.addEventListener('change', (event) => {
     const selectedColor = colors[event.target.value];
     textInput.value = selectedColor;
-    load_window.style.display = 'block';
-    parsePalette();
+    const inputImageElement = getImageElementFromWindow(img_window);
+    if(inputImageElement !== null){
+      load_window.style.display = 'block';
+      parsePalette();
+    }
   });
   sidebar.appendChild(palette_list);
   sidebar.appendChild(inp_div);
