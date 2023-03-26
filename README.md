@@ -49,7 +49,8 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ![pixel_data_output_example](https://user-images.githubusercontent.com/25288625/227093468-c9096f79-0925-4798-9122-d54438cc5c6e.PNG)
 
-## Side Notes...
+## Side Notes & Bugs
+- Must open an image before changing palette, otherwise stuck on 'Loading...' until reload.
 - When copying sprite data from an image larger than 128x128, the resulting sprites tile indices are arranged in linear order from top-left to bottom right in sections of 16 sprites per row until it reaches the last row, instead of the standard row/column ordering for smaller images. This is due to the tile map and sprite map being 16x16 tiles in size. In this case, all of the sprites will not fit on one page/bank, so you will have to add in logic to switch banks, to acces the extra sprites that didn't fit on page 1, within your game script.
 - I have only tested this with .png .jpeg and .bmp image formats.
 - The program is not 100% complete, so expect possible bugs (although I haven't found any major ones testing)
