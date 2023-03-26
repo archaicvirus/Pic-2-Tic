@@ -36,7 +36,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 ![sprite_data_example_github](https://user-images.githubusercontent.com/25288625/227044658-81c94e91-8593-4e9a-a7a3-2b83bdaaf24f.PNG)
 
 ## Output
-- Paste the sprite data between the two `<SPRITES> </SPRITES>` tags in your TIC-80 file, and reload your file to see the converted sprites. You can also paste in between `<MAP> </MAP>` if you want to use them as map tiles.
+- Paste the sprite data between the two `<SPRITES> </SPRITES>` tags in your TIC-80 file, and reload your file to see the converted sprites. You can also paste in between `<TILES> </TILES>` if you want to use them as map tiles.
 
 ![image](https://user-images.githubusercontent.com/25288625/227029707-522adcec-e08e-4416-926e-c6abdc1f8434.png)
 
