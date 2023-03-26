@@ -14,6 +14,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ## Features
 - Load any image and convert it's colors to the selected palette (using closest color algorithm)
+- Output image to TIC-80 sprite or pixel format.
 - Displays both original and converted images
 - Resize images using the anchor on the bottom right of each widget (Does not affect output scale)
 - Drag and reposition image widget by dragging the top 'bar'
