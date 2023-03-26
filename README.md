@@ -3,7 +3,8 @@
 A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is still a work in progress (WIP), but its fully usable and all main features work fine. After some polishing/small bug fixes, a standalone version will be packaged, perhaps with Electron or NW.js.
 
 ## To run the app
-- For now, you can run the app by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
+- [Run the App](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
+- Or, you can host the html by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
 - If you have never used vs code or the live server plugin, after installing both, clone the src folder, open the folder with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will pop open a new tab in your default browser and run the app. 
 - More experienced users feel free to run/host the files however you see fit. Please note that I am not an experienced web developer, and the code could definitely be refactored. 
 - No 3rd party libs, written in pure javascript, html, and css.
