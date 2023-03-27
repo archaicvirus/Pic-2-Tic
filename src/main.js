@@ -33,6 +33,7 @@ const colors = {
   'Smoky Quartz': 'a0522d8b4513cd853fd2691edeb887ee9a00f28500ffa07a5e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
   'Neon Lights': '00ffff00ff00ff00ffffff00ff4500ff1493ee82eeba55d35e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
   'Autumn Harvest': '8b0000a52a2ab22222cd5c5cdc143cff6347ff7f50ff45005e5e5e5e5e5d5e5e5c5e5e5b5e5e5a5e5e595e5e585e5e57',
+  'Eroge Copper' : '0d080d4f2b24825b31c59154f0bd77fbdf9bfff9e4bebbb27bb24e74adbb4180a032535f2a23497d3840c16c5be89973',
 };
 
 function set_initial_palette() {
@@ -166,8 +167,11 @@ function init() {
   palette_list.addEventListener('change', (event) => {
     const selectedColor = colors[event.target.value];
     textInput.value = selectedColor;
-    load_window.style.display = 'block';
-    parsePalette();
+    const inputImageElement = getImageElementFromWindow(img_window);
+    if(inputImageElement !== null){
+      load_window.style.display = 'block';
+      parsePalette();
+    }
   });
   sidebar.appendChild(palette_list);
   sidebar.appendChild(inp_div);
@@ -239,7 +243,7 @@ function get_pixel_data() {
   tempCtx.drawImage(outputImageElement, 0, 0, width, height);
   const imageData = tempCtx.getImageData(0, 0, width, height);
   const pixelData = imageData.data;
-  let outputString = 'output_img = [';
+  let outputString = 'output_img = {';
   for (let i = 0; i < pixelData.length; i += 4) {
     const r = pixelData[i];
     const g = pixelData[i + 1];
@@ -257,7 +261,7 @@ function get_pixel_data() {
       outputString += '\n';
     }
   }
-  outputString += '];';
+  outputString += '}';
   navigator.clipboard.writeText(outputString).then(function () {
     console.log('Pixel data copied to clipboard successfully!');
   }).catch(function (err) {
@@ -366,17 +370,17 @@ function get_sprite_data() {
   const outputImageElement = getImageElementFromWindow(output_window);
   const width = outputImageElement.naturalWidth;
   const height = outputImageElement.naturalHeight;
-  try {
-    if (width > 128 || height > 128) {
-      //sprite_data = 'image'
-      throw new Error("Warning: Images larger than 128x128 will take much longer to process sprite data!");
-    }
-  } catch (error) {
-    alert(error.message);
-    lw_text.innerHTML = 'Loading...';
-    load_window.style.display = 'none';
-    return
-  }
+  // try {
+  //   if (width > 128 || height > 128) {
+  //     //sprite_data = 'image'
+  //     throw new Error("Warning: Images larger than 128x128 will take much longer to process sprite data!");
+  //   }
+  // } catch (error) {
+  //   alert(error.message);
+  //   lw_text.innerHTML = 'Loading...';
+  //   load_window.style.display = 'none';
+  //   return
+  // }
   const tileWidth = 8;
   const tileHeight = 8;
   const sectionsPerRow = Math.ceil(width / tileWidth);
