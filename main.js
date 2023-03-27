@@ -243,7 +243,7 @@ function get_pixel_data() {
   tempCtx.drawImage(outputImageElement, 0, 0, width, height);
   const imageData = tempCtx.getImageData(0, 0, width, height);
   const pixelData = imageData.data;
-  let outputString = 'output_img = [';
+  let outputString = 'output_img = {';
   for (let i = 0; i < pixelData.length; i += 4) {
     const r = pixelData[i];
     const g = pixelData[i + 1];
@@ -261,7 +261,7 @@ function get_pixel_data() {
       outputString += '\n';
     }
   }
-  outputString += '];';
+  outputString += '}';
   navigator.clipboard.writeText(outputString).then(function () {
     console.log('Pixel data copied to clipboard successfully!');
   }).catch(function (err) {
