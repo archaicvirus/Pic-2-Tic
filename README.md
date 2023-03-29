@@ -4,7 +4,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 
 ## To run the app
 - [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
-- Or, you can run the web app by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
+- Or, you can run the app locally by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
 - If you are new to VSC, after installing both, clone the src folder, open the folder with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will then open a new tab in your default browser, running the app. 
 - More experienced users feel free to serve the html however you see fit. Please note that I am not a professional web developer, and the code is sub-optimal.
 - No 3rd party libs, written in pure javascript, html, and css.
