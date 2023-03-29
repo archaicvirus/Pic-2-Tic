@@ -69,11 +69,11 @@ function draw_image(x, y, width, height, pixel_data, color_key)
 - `width, height` - The natural width and height of the image in pixels
 - `pixel_data` - A lua table copied from 'copy pixel data' button
 - `color_key` - Transparency, eg. will not draw this color/palette index
-- For fullscreen images, `x, y` should be `0, 0` and `width, height` should be `240, 136` (TIC-80 resolution)
+- For fullscreen images, `x, y` should be `0, 0` and `width, height` should be `240, 136` (TIC-80's screen resolution)
 
 ## Side Notes & Bugs
 - When copying sprite data from an image larger than 128x128, the resulting sprites tile indices are arranged in linear order from top-left to bottom right in sections of 16 sprites per row until it reaches the last row, instead of the standard row/column ordering for smaller images. This is due to the tile map and sprite map being 16x16 tiles in size. In this case, all of the sprites will not fit on one page/bank, so you will have to add in logic to switch banks, to acces the extra sprites that didn't fit on page 1, within your game script.
 - I have only tested this with .png .jpeg and .bmp image formats.
 - The program is not 100% complete, so expect possible bugs (although I haven't found any major ones testing)
 - Note the features (WIP feature) at the end are not finished.
-- Please, any feature/s you would like, open a discussion or pull request, or message me in the tic80 discord and I will consider implementing them.
+- Please, any feature/s you would like, open a discussion or pull request, or message me in the TIC80 discord and I will try to implement them.
