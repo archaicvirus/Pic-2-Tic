@@ -257,7 +257,7 @@ function get_pixel_data() {
 
     //outputString += paletteIndex.toString(16);
     outputString += paletteIndex;
-    if (chars % imgCopy.naturalWidth === 0) {
+    if (chars % width === 0) {
       outputString += '\n';
     }
   }
