@@ -257,9 +257,9 @@ function get_pixel_data() {
 
     //outputString += paletteIndex.toString(16);
     outputString += paletteIndex;
-    //if (chars % 100 === 0) {
-    //  outputString += '\n';
-    //}
+    if (chars % imgCopy.naturalWidth === 0) {
+      outputString += '\n';
+    }
   }
   outputString += '}';
   navigator.clipboard.writeText(outputString).then(function () {
