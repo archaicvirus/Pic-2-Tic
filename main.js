@@ -257,7 +257,7 @@ function get_pixel_data() {
 
     //outputString += paletteIndex.toString(16);
     outputString += paletteIndex;
-    if (chars % width == 0) {
+    if (chars % outputImageElement.naturalWidth == 0) {
       console.log('inserting new line into pixel data');
       outputString += '\n';
     }
