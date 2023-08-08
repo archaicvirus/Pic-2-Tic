@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+  </style>
+  <meta charset="UTF-8">
+  <title>Pic-2-Tic</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/color-picker.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <script src="scripts/ControlPanel.js"></script>
+  <script src="scripts/presets.js"></script>
+  <script src="scripts/draggable.js"></script>
+  <script src="scripts/palette.js"></script>
+  <script src="scripts/ColorPicker.js"></script>
+  <script src="scripts/PalettePicker.js"></script>
+  <script src="scripts/PresetPicker.js"></script>
+  <script src="scripts/rgbquant.js"></script>
+  
+  <!-- Sidebar -->
+  <div id="sidebarid" class='sidebar'>
+    <div class="sidebar-header">
+      <span>Pic-2-Tic</span>
+    </div>
+    <!-- <div style="font-size: 12px;" class="palette-title">Current Palette</div> -->
+    <span class="palette-title" id="pal-title">Sweetie 16</span>
+  </div>
+  
+  <!-- Image Canvas -->
+  <div id="draggableDivContainer" class="draggable-container">
+    <div id="notification-container"></div>
+    <div class="file-input">
+      <div class="image-icon">
+        <i class="fa-solid fa-square-plus" id="fileIcon"></i>
+        <input type="file" id="fileInput" accept=".png, .jpeg, .jpg, .gif .webp .tiff .bmp .pdf" style="display: none;">
+      </div>
+      <div class="drag-text">
+        Drop Images Here
+      </div>
+      <div class="drag-text">
+        .png .jpeg .gif
+      </div>
+    </div>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
