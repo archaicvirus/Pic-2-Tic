@@ -44,11 +44,9 @@ class ControlPanel {
     this.usePalette = createOption({name: 'Use This Palette', value: false, opts: ['False', 'True'], title: 'If enabled, use this image\'s palette instead of global palette'});
     this.root.appendChild(this.usePalette);
   }
-
   open() {
     this.root.style.display = 'flex';
   }
-
   close() {
     this.root.style.display = 'none';
     this.icon.style.display = 'flex';
@@ -64,17 +62,13 @@ function createOption(option) {
   select.classList.add('dither-select');
   root.classList.add('dither-select-box');
   root.appendChild(textBox);
-  // console.log(option);
   for(let i = 0; i < option.opts.length; i++) {
-    // console.log(option.opts[i]);
     let newOption = document.createElement('option');
     textBox.title = option.title;
-    // newOption.value = option.value;
     newOption.classList.add('dither-option');
     newOption.innerText = option.opts[i] !== null ? option.opts[i] : 'No dithering';
     select.appendChild(newOption);
   };
-  root.appendChild(select);
-  
+  root.appendChild(select);  
   return root
 }

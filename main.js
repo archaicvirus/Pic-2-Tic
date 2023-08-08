@@ -216,28 +216,6 @@ function applyPalette() {
   showNotification('Applied palette to all images!', 5000);
 };
 
-// JavaScript
-function showNotification(message, duration) {
-  const notificationContainer = document.getElementById('notification-container');
-
-  // Create a new notification element
-  const notification = document.createElement('div');
-  notification.classList.add('notification');
-  notification.innerText = message;
-
-  // Append the notification to the container
-  notificationContainer.appendChild(notification);
-
-  // After the specified duration, remove the notification
-  setTimeout(() => {
-    notification.classList.add('hidden');
-    // Remove the notification from the container after it fades out
-    setTimeout(() => {
-      notificationContainer.removeChild(notification);
-    }, 300);
-  }, duration);
-}
-
 palette.colorPicker.okButton.addEventListener('click', acceptColor);
 palette.colorPicker.cancelButton.addEventListener('click', cancelColor);
 applyPaletteButton.addEventListener('click', applyPalette);

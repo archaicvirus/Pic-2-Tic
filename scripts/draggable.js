@@ -1,7 +1,5 @@
 class DraggableWindow {
   constructor(imageSrc, name) {
-    // this.imageSrc = imageSrc.src;
-    // this.originalSrc = imageSrc.src;
     this.imageIndexed = '';
     this.name = name;
     this.palette_string = '';
@@ -18,7 +16,6 @@ class DraggableWindow {
     this.copy_palette_button.classList.add('copy-palette-button');
     this.palette_div = document.createElement('div');
     this.palette_div.classList.add('palette-div');
-
     // static gear button
     this.icon = document.createElement('i');
     this.icon.classList.add('fa-solid');
@@ -55,21 +52,9 @@ class DraggableWindow {
     this.closeButton = document.createElement('div');
     this.closeButton.classList.add('close-button');
     this.closeButton.innerHTML += '&#10006';
-    // this.closeButton.innerText = 'X';
     this.win_drag_bar.appendChild(this.closeButton);
-    
     let conta = document.getElementById('draggableDivContainer')
     conta.appendChild(this.draggableDiv);
-    // this.setImageSrc(imageSrc, name);
-
-    // this.quant = new RgbQuant(opts);
-    // this.quant.sample(this.contentDiv.querySelector('img'));
-    // this.palette_string = '';
-    // var pal = this.quant.palette(true, true);
-    // for(let i = 1; i < 16; i++){
-    //   this.palette_string += rgbToHex(pal[i]);
-    // }
-    // this.palette_string = pal.join();
     this.addEventListeners();
   }
   addEventListeners() {
@@ -77,15 +62,15 @@ class DraggableWindow {
     let offsetX = 0;
     let offsetY = 0;
 
-
     this.copyPixelData.addEventListener('click', () => {
-      console.log('copying pixel data');
       let outputString = '{' + this.imageIndexed.join(',') + '}';
 
       navigator.clipboard.writeText(outputString).then(function () {
         console.log('Pixel data copied to clipboard successfully!');
+        showNotification('Pixel data copied to clipboard successfully!', 5000);
       }).catch(function (err) {
         console.error('Could not copy pixel data to clipboard:', err);
+        showNotification('Could not copy pixel data to clipboard: ' + err, 5000);
       });
     });
 
@@ -93,24 +78,17 @@ class DraggableWindow {
       this.controlPanel.open();
     });
 
-    // this.draggableDiv.addEventListener('resize', () => {
-    //   console.log('resizing');
-    //   this.palette_div.style.marginTop = this.win_drag_bar.offsetTop + 35 + 'px';
-    // });
-
     this.download.addEventListener('click', () => {
       console.log('download');
     });
 
     this.copy_palette_button.addEventListener('click', (event) => {
-      // console.log('clicked copy palette button');
-      // this.quant.sample(this.contentDiv.querySelector('img'));
-      // var pal = this.quant.palette(true, true);
-      console.log(this.palette_string);
       navigator.clipboard.writeText(this.palette_string).then(function () {
         console.log('Palette String copied to clipboard successfully!');
+        showNotification('Palette String copied to clipboard successfully!', 5000);
       }).catch(function (err) {
         console.error('Could not copy Palette String to clipboard:', err);
+        showNotification('Could not copy Palette String to clipboard:' + err, 5000);
       });
     }); 
 
@@ -136,8 +114,6 @@ class DraggableWindow {
         let cont = document.getElementById('draggableDivContainer')
         let minX = sb.offsetLeft - 5;
         let minY = cont.offsetTop - 5;
-        // let maxX = sb.offsetLeft + cont.offsetWidth - this.draggableDiv.offsetWidth - 5;
-        // let maxY = cont.offsetHeight - this.draggableDiv.offsetHeight;
         let maxX = 10000;
         let maxY = 10000;
         let clampedLeft = Math.min(Math.max(minX, newLeft), maxX);
@@ -184,7 +160,6 @@ class DraggableWindow {
     originalElement.addEventListener('dragstart', (e) => e.preventDefault());
     imageElement.src = src;
     imageElement.addEventListener('dragstart', (e) => e.preventDefault());
-    // this.contentDiv.innerHTML = '';
     originalElement.onload = () => {
 
     };
@@ -193,20 +168,14 @@ class DraggableWindow {
       let height = imageElement.naturalHeight;
       let dimensions = `${width}x${height}`;
       this.drag_bar_text.innerText = `${name} - ${dimensions}`;
-      // this.draggableDiv.style.minWidth = `${width/4}px`;
-      // this.draggableDiv.style.width = `${width/2}px`;
-      // this.contentDiv.style.height = height;
-
+      
       if(!this.palette_bg_div) {
-        // this.draggableDiv.style.minWidth = `${width/4}px`;
         this.draggableDiv.style.width = `${width}px`;
         this.contentDiv.style.height = height;
         this.quant = new RgbQuant(opts);
         this.quant.sample(imageElement, width);
         var pal = this.quant.palette(true, true);
         this.imageIndexed = this.quant.reduce(imageElement, 2);
-        // dragDivs[i].imageIndexed = reducedIndexed;
-        // console.log(pal);
         for(let i = 0; i < 16; i++){
           let col = {r:pal[i][0], g:pal[i][1], b:pal[i][2]};
           this.palette_string += rgbToHex(col).slice(1);
@@ -225,15 +194,11 @@ class DraggableWindow {
           this.iconGridSmall.appendChild(iconSmall);
         }
 
-        // palettePreview.appendChild(paletteNameSpan);
-        // palettePreview.appendChild(iconGridSmall);
-        // listItem.appendChild(paletteNameSpan);
         this.palette_bg_div.appendChild(this.iconGridSmall);
         this.palette_bg_div.style.position = 'relative';
         this.iconGridSmall.style.position = 'relative';
         this.iconGridSmall.style.marginLeft = '15px';
         this.palette_div.appendChild(this.palette_bg_div);
-      // this.copy_palette_button.appendChild(new p)
       }
     };
     this.contentDiv.innerHTML = '';
