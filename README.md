@@ -27,7 +27,7 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Copy or paste any palette directly between TIC-80's sprite editor and Pic2Tic.
 - Palette string is a 96-character string where each 6 digits (0-F) represent a palette color `16 colors * 6 = 96 total characters`, excluding any quotes or #'s
 - Click any palette color to customize with color picker
-- Output image to TIC-80's pixel format
+- Output image to TIC-80's pixel or sprite format, paste into your code for immediate import
 - Non-destructive workflow (palette applications are always performed on a copy of the original source image)
 - Resize images using the anchor on the bottom right of each widget (Does not affect output scale)
 - Drag and reposition image widget by dragging the top 'bar'
