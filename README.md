@@ -64,21 +64,25 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 
 ![sprite_data_example_github](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/1e10e8d6-540b-4145-aabd-7f94bdf14fb6)
 
+
 ## Copy Image Palette
 - Copies the image's natural palette to the clipboard
 
 ![copyPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/302c3807-cb8c-4598-82e7-297a332a8c48)
+
 
 ## Copy Selected Palette
 - Copies the current palette-preset (including custom palettes) to the clipboard
 
 ![copyCurrentPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/5150264a-f0a7-498d-8057-8ccb9a6cab20)
 
+
 ## Paste/Import Palette
 - Click to paste a copied palette from Pic2Tic, TIC80 or any source
 - Example palette `010413efefefffffff0b2049184179152409263512c8d2db473f1b5d5233162e36806a47c0a2752b53897d95b2e2e1df`
 
 ![pasteCurrentPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/6a8cf8e9-0b8b-4dee-bba0-4a4de67d41aa)
+
 
 
 ## Customizing Palette
@@ -88,6 +92,7 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Hover any color cell to show it's palette index (same order as TIC80)
 
 ![customizeColors](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/9d7c0792-106f-4057-8de3-cd4db79706d4)
+
 
 
 ## Draw image function for TIC-80 in lua
