@@ -85,6 +85,7 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Click on any of the color cells within the palette, to change with color picker
 - Adjust the RGB sliders, or manually type numbers in text-input box to the right
 - Click the x to cancel changes or the check to accept the new color
+- Hover any color cell to show it's palette index (same order as TIC80)
 
 ![customizeColors](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/9d7c0792-106f-4057-8de3-cd4db79706d4)
 
