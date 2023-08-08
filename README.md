@@ -29,8 +29,8 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 - Non-destructive workflow (palette applications are always performed on a copy of the original source image)
 - Resize images using the anchor on the bottom right of each widget (Does not affect output scale)
 - Drag and reposition image widget by dragging the top 'bar'
-- Invalid palette strings are ignored, keeping the current palette.
 - Notifications pop up and fade over time, indicating user actions
+- When pasting a custom palette using the clipboard button-icon, invalid palette strings are ignored, keeping the current palette.
 
 ## Copy Pixel Data
 - Outputs a 1-dimensional table of all the pixels (converted to palette indices) to the clipboard
