@@ -1,6 +1,7 @@
 # Pic-2-Tic
 
-A web-app designed specifically to convert images to 16-color format, for use with the TIC-80 fantasy console.
+A web-app designed to convert images to 16-color format, for use with the TIC-80 fantasy console.
+- Images can be exported for use anywhere.
 
 ## To run the app
 - [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
