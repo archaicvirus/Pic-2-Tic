@@ -1,13 +1,13 @@
 # Pic-2-Tic
 
-A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is nearly complete albeit any bugs.
+A web-app designed specifically to convert images for use with the TIC-80 fantasy console.
 
 ## To run the app
 - [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
 - Or download the source and host the index.html file
 - Written in pure javascript, html, and css.
 - Utilizes [RgbQuant.js](https://github.com/leeoniya/RgbQuant.js) for dithering, palette application, and palette retrieval.
-- I only made this tool for a personal need I have developing [Craptorio](https://github.com/archaicvirus/Craptorio) a Factorio de-make for the TIC-80, however it occured to me that this could be useful to fellow TIC-80 developers/creators.
+- I made this tool while developing [Craptorio](https://github.com/archaicvirus/Craptorio) a wip Factorio de-make for the TIC-80, however it occured to me that this could be useful to fellow TIC-80 developers/creators.
 
 ![palette_demo2](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/7d45f458-2ca3-45cd-8b02-fa57edcf6af6)
 
@@ -26,7 +26,7 @@ A web-app designed specifically to convert images for use with the TIC-80 fantas
 - Palette string is a 96-character string where each 6 digits (0-F) represent a palette color `16 colors * 6 = 96 total characters`, excluding any quotes or #'s
 - Click any palette color to customize with color picker
 - Output image to TIC-80's pixel format
-- Non-destructive workflow (palette applications are always performed on original source image)
+- Non-destructive workflow (palette applications are always performed on a copy of the original source image)
 - Resize images using the anchor on the bottom right of each widget (Does not affect output scale)
 - Drag and reposition image widget by dragging the top 'bar'
 - Invalid palette strings are ignored, keeping the current palette.
