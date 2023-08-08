@@ -24,6 +24,34 @@ sidebar.appendChild(applyPaletteButton);
 sidebar.appendChild(presetPicker.getPresetPickerElement());
 copyPasteDiv.appendChild(copyPaletteButton);
 copyPasteDiv.appendChild(pastePaletteButton);
+sidebar.appendChild(copyPasteDiv);
+
+copyPaletteButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigator.clipboard.writeText(currentPalette).then(function () {
+    console.log('Current palette copied to clipboard successfully!');
+    showNotification('Current palette copied to clipboard successfully!', 5000);
+  }).catch(function (err) {
+    console.error('Could not copy Current palette to clipboard:', err);
+    showNotification('Could not copy Current palette to clipboard: ' + err, 5000);
+  });
+});
+
+pastePaletteButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigator.clipboard.readText().then(function (clipboardText) {
+    let result = parsePalette('Custom', clipboardText.toString());
+    // console.log('Text from clipboard:', clipboardText.toString());
+    if (result === true) {
+      showNotification('Palette Set Successfully!', 5000);
+    }else{
+      showNotification('Could not read text from clipboard: ' + err, 5000);  
+    }
+  }).catch(function (err) {
+    console.error('Could not read text from clipboard:', err);
+    showNotification('Could not read text from clipboard: ' + err, 5000);
+  });
+});
 
 document.addEventListener("drop", (event) => {
   event.preventDefault();
@@ -130,6 +158,16 @@ function openPalette(index, color) {
   selectedColor = index;
   palette.colorPicker.root.style.display = 'flex';
 };
+
+function parsePalette(name, palette) {
+  let palette_string = palette;
+  if (palette_string.length === 96) {
+    presetPicker.handlePaletteChange(name, palette)
+  }else{
+    return false;
+  }
+  return true;
+}
 
 function applyPalette() {
   let palette = [];
