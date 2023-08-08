@@ -34,14 +34,60 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Notifications pop up and fade over time, indicating user actions
 - When pasting a custom palette using the clipboard button-icon, invalid palette strings are ignored, keeping the current palette.
 
+## Image Settings
+- Here you can choose the dithering kernel, enable serpentine dithering pattern, and toggle using the image's natural palette instead of the preset.
+
+![settings2](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/f02c4ca5-e4b7-46ab-8659-345d30768f7d)
+
+![settings](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/1cde7ac6-52ca-439b-9acd-ab8633b5174e)
+
+## Download Image
+- Downloads a copy of the currently displayed image
+
+![downloadImage](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/ae3e7009-801f-496b-a99b-c43bf524f6c2)
+
 ## Copy Pixel Data
+![copyPixel_data](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/451534be-5688-4494-ac90-8bb4c573971b)
 - Outputs a 1-dimensional table of all the pixels (converted to palette indices) to the clipboard
 - For drawing arbitrary sized images, 240x136 or smaller (tic80 screen size). It can easily handle any size images, though.
 - Accompanied by a drawing function (used within TIC-80) to draw each pixel to the screen using pix() - See below
+- Example pixel data
 
-## Example pixel data
+![examplePixelData](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/2072271a-b11f-488a-8e06-ba9f891c26d5)
 
-![pixel_data_output_example](https://user-images.githubusercontent.com/25288625/227093468-c9096f79-0925-4798-9122-d54438cc5c6e.PNG)
+
+## Copy Sprite Data
+![copySprite_data](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/657026f0-ae9e-40c4-82b5-69a0342ab8c6)
+
+- Paste this data between your `<SPRITES> </SPRITES>` or `<TILES> </TILES>` tags in your TIC80 cart file.
+- Example sprite data:
+
+![sprite_data_example_github](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/1e10e8d6-540b-4145-aabd-7f94bdf14fb6)
+
+## Copy Image Palette
+- Copies the image's natural palette to the clipboard
+
+![copyPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/302c3807-cb8c-4598-82e7-297a332a8c48)
+
+## Copy Selected Palette
+- Copies the current palette-preset (including custom palettes) to the clipboard
+
+![copyCurrentPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/5150264a-f0a7-498d-8057-8ccb9a6cab20)
+
+## Paste/Import Palette
+- Click to paste a copied palette from Pic2Tic, TIC80 or any source
+- Example palette `010413efefefffffff0b2049184179152409263512c8d2db473f1b5d5233162e36806a47c0a2752b53897d95b2e2e1df`
+
+![pasteCurrentPalette](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/6a8cf8e9-0b8b-4dee-bba0-4a4de67d41aa)
+
+
+## Customizing Palette
+- Click on any of the color cells within the palette, to change with color picker
+- Adjust the RGB sliders, or manually type numbers in text-input box to the right
+- Click the x to cancel changes or the check to accept the new color
+
+![customizeColors](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/9d7c0792-106f-4057-8de3-cd4db79706d4)
+
 
 ## Draw image function for TIC-80 in lua
 
