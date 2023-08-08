@@ -10,56 +10,48 @@ class PresetPicker {
   }
   
   createPaletteElement() {
-    const pal = new Palette(this.currentPalette);
+    let pal = new Palette(this.currentPalette);
     return pal.getPaletteElement();
   }
 
   createDropdownElement() {
-    const dropdown = document.createElement('div');
+    let dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
 
-    const dropdownHeader = document.createElement('div');
+    let dropdownHeader = document.createElement('div');
     dropdownHeader.classList.add('dropdown-header');
     dropdownHeader.innerText = 'Select Palette';
     dropdownHeader.addEventListener('click', () => this.handleDropdownToggle());
-
-    // const dropdownTitle = document.createElement('h3');
-    // dropdownTitle.classList.add('dropdown-title');
-
-    const dropdownIcon = document.createElement('span');
+    let dropdownIcon = document.createElement('span');
     dropdownIcon.classList.add('dropdown-icon');
     dropdownIcon.classList.add('open');
-    // dropdownHeader.appendChild(dropdownTitle);
     dropdownHeader.appendChild(dropdownIcon);
-
-    const dropdownList = document.createElement('ul');
+    let dropdownList = document.createElement('ul');
     dropdownList.classList.add('dropdown-list');
     dropdownList.style.display = 'none';
 
-    for (const [paletteName, paletteColors] of Object.entries(Presets)) {
-      const listItem = document.createElement('li');
+    for (let [paletteName, paletteColors] of Object.entries(Presets)) {
+      let listItem = document.createElement('li');
       listItem.classList.add('dropdown-item');
       listItem.addEventListener('click', () => this.handlePaletteChange(paletteName, paletteColors));
 
-      const palettePreview = document.createElement('div');
+      let palettePreview = document.createElement('div');
       palettePreview.classList.add('palette-preview');
 
-      const paletteNameSpan = document.createElement('div');
+      let paletteNameSpan = document.createElement('div');
       paletteNameSpan.classList.add('palette-name');
       paletteNameSpan.innerText = paletteName;
 
-      const iconGridSmall = document.createElement('div');
+      let iconGridSmall = document.createElement('div');
       iconGridSmall.classList.add('icon-grid-small');
 
       for (let i = 0; i < 16; i++) {
-        const iconSmall = document.createElement('div');
+        let iconSmall = document.createElement('div');
         iconSmall.classList.add('icon-small');
         iconSmall.style.backgroundColor = `#${paletteColors.slice(i * 6, i * 6 + 6)}`;
         iconGridSmall.appendChild(iconSmall);
       }
 
-      // palettePreview.appendChild(paletteNameSpan);
-      // palettePreview.appendChild(iconGridSmall);
       listItem.appendChild(paletteNameSpan);
       listItem.appendChild(iconGridSmall);
       dropdownList.appendChild(listItem);
@@ -81,9 +73,9 @@ class PresetPicker {
 
   handleDropdownToggle() {
     this.isDropdownOpen = !this.isDropdownOpen;
-    const dropdownList = this.dropdownElement.querySelector('.dropdown-list');
+    let dropdownList = this.dropdownElement.querySelector('.dropdown-list');
     dropdownList.style.display = this.isDropdownOpen ? 'block' : 'none';
-    const dropdownIcon = this.dropdownElement.querySelector('.dropdown-icon');
+    let dropdownIcon = this.dropdownElement.querySelector('.dropdown-icon');
     dropdownIcon.classList.toggle('open', this.isDropdownOpen);
   }
 
@@ -98,9 +90,9 @@ class PresetPicker {
 
   closeDropdown() {
     this.isDropdownOpen = false;
-    const dropdownList = this.dropdownElement.querySelector('.dropdown-list');
+    let dropdownList = this.dropdownElement.querySelector('.dropdown-list');
     dropdownList.style.display = 'none';
-    const dropdownIcon = this.dropdownElement.querySelector('.dropdown-icon');
+    let dropdownIcon = this.dropdownElement.querySelector('.dropdown-icon');
     dropdownIcon.classList.remove('open');
   }
 

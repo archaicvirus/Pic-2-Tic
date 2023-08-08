@@ -23,14 +23,12 @@ body {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   /* box-shadow: inset 0 0 3px rgb(75, 75, 75); */
   background: #5b5b5b;
   /* border-radius: 10px; */
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(41, 40, 40);
   border: 1px solid rgb(118, 118, 118);
@@ -49,8 +47,6 @@ body {
   flex-direction: column;
   user-select: none;
   position: relative;
-  /* width: calc(100% - 279px); */
-  /* height: calc(100vh - 10px); */
   background-image: linear-gradient(
     315deg,
     hsl(0deg 0% 18%) 0%,
@@ -70,38 +66,21 @@ body {
   margin-left: 0px;
   border: 1px solid rgb(118, 118, 118);
   overflow: auto;
-  /* border-radius: 5px; */
-  /* border-style: groove; */
   border-radius: 3px;
 }
-
-/* .draggable {
-  user-select: none;
-  position: absolute;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  padding: 10px;
-  cursor: move;
-} */
 
 .draggable-window {
   resize: horizontal;
   position: absolute;
   top: 5px;
   left: 220px;
-  /* padding: 5px; */
   background-color: #333;
   cursor: auto;
   width: 100px;
   min-width: 400px;
-  /* max-width: 500px; */
-  /* height: auto; */
   overflow: hidden;
   image-rendering: pixelated;
   border: 1px solid rgb(118, 118, 118);
-  /* border-radius: 5px; */
-  /* box-shadow: 2px 2px 10px #151515; */
-  /* border-style: groove; */
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -110,14 +89,6 @@ body {
   z-index: auto;
 }
 
-/* .draggable-window::before {
-  z-index: 1;
-} */
-
-/* .draggable-window:active {
-  z-index: 10;
-} */
-
 .content {
   display: flex;
   height: 100%;
@@ -125,31 +96,19 @@ body {
   padding: 0px;
   margin: 5px;
   border-radius: 3px;
-  /* margin-bottom: 10px; */
-  /* padding: 0px; */
 }
 
 .draggable-window img {
   width: 100%;
   height: 100%;
-  /* padding: 3px; */
-  /* object-fit: contain; */
   image-rendering: pixelated;
-  /* margin: 0px; */
-  /* padding-bottom: 0px; */
 }
 
 .drag-bar {
-  /* position: sticky;
-  top: 0px;
-  left: 0px; */
   display: flex;
   flex-direction: row;
   cursor: grab;
   background-color: #585858;
-  /* border-radius: 2px; */
-  /* width:  100%; */
-  /* padding: 1px; */
   height: fit-content;
   margin: 5px;
   padding: 3px;
@@ -159,14 +118,9 @@ body {
   justify-content: center;
   justify-items: center;
   user-select: none;
-  /* margin: auto; */
-  
-  /* font-size: 10px; */
   text-overflow: auto;
   font-size: 12px;
   text-shadow: 1px 1px rgb(41, 40, 40);
-  
-  /* overflow: hidden; */
 }
 
 .close-button {
@@ -193,12 +147,8 @@ body {
   flex: 1;
   display: flex;
   flex-direction: row;
-  /* position: absolute;
-  bottom: 0px;
-  left: 0px; */
   width: auto;
   height: 25px;
-  /* background-color: #05f7ff; */
   font-size: 25px;
   margin: 5px;
   padding: 5px;
@@ -221,20 +171,15 @@ body {
 .palette-div {
   display: flex;
   flex-direction: row;
-  /* width: fit-content; */
-  /* height: fit-content; */
   position: absolute;
   bottom: 0px;
   left: 0px;
-  /* cursor: auto; */
   margin: 10px;
   padding: 0;
-  /* z-index: 1; */
   border-radius: 3px;
 }
 .palette-div:hover {
   background-color: #141414b7;
-  /* opacity: 80%; */
 }
 
 .palette-div .icon-grid-small {
@@ -242,20 +187,10 @@ body {
 }
 
 .image-palette-div {
-  /* display: flex;
-  flex-direction: row; */
-  /* position: relative; */
-  /* right: 0; */
-  /* flex: 1; */
-  /* background-color: #202020; */
-  /* padding: 1px; */
-  /* margin-left: 50px; */
   align-self: center;
   align-content: center;
   justify-self: center;
   width: 100%;
-  /* width: auto;
-  height: auto; */
 }
 
 .copy-palette-button:hover {
@@ -268,29 +203,19 @@ body {
   width: 100%;
   height: 100%;
   flex: 1;
-  /* text-shadow: 3px 3px rgb(41, 40, 40); */
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  /* background-image: linear-gradient(
-    90deg,
-    hsl(0, 0%, 27%) 50%,
-    hsl(0, 0%, 25%) 75%,
-    hsl(0, 0%, 20%) 100%
-  ); */
   background-color: #3e3e3e;
   width: 220px;
   height: calc(100vh - 10px);
   margin: 5px;
   border: 2px solid rgb(108, 108, 108);
-  /* border-radius: 5px; */
   border-style: groove;
   align-items: center;
   align-content: center;
-  /* justify-content: center;
-  justify-items: center; */
   border-radius: 3px;
 }
 
@@ -347,7 +272,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 3px;
-  /* width: 100%; */
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -355,17 +279,10 @@ body {
   text-align: center;
   border: 1px solid #606060;
   background-color: #282828;
-  /* border: 3px solid greenyellow; */
   border-radius: 3px;
 }
 
-/* .color-picker {
-  display: inline-block;
-  display: none;
-} */
-
 .palette-name {
-  /* flex: 1; */
   display: flex;
   font-size: 12px;
   text-align: left;
@@ -373,7 +290,6 @@ body {
   word-wrap: normal;
   height: 100%;
   width: 50%;
-  /* align-self: center; */
 }
 
 .palette-title {
@@ -390,20 +306,14 @@ body {
   height: fit-content;
   grid-template-columns: repeat(8, 24px);
   grid-template-rows: repeat(2, 24px);
-  /* border: 1px solid #999; */
   border-radius: 2px;
   align-content: center;
   justify-content: center;
-  /* margin: 1px; */
-  /* padding: 1px; */
-  /* box-shadow: 3px 3px 3px #2a2a2a; */
 }
 
 .icon {
   width: 22px;
   height: 22px;
-  /* padding: 1px; */
-  /* margin: 3px; */
   border: 1px solid #202020;
 }
 
@@ -413,17 +323,10 @@ body {
 
 .dropdown {
   display: flex;
-  /* flex: 1; */
   margin-left: 10px;
   margin-right: 10px;
   height: 30px;
   position: relative;
-  /* border-radius: 5px; */
-  /* justify-content: center; */
-  /* align-content: center; */
-  /* justify-items: center; */
-  /* align-items: center; */
-  /* text-align: center; */
   border: 1px solid #414141;
   box-shadow: 3px 3px 3px #2a2a2a;
   background-color: #525252;
@@ -436,8 +339,6 @@ body {
 
 .dropdown-header {
   justify-content: center;
-  /* align-content: center; */
-  /* justify-items: center; */
   align-items: center;
   display: flex;
   flex: 1;
@@ -448,14 +349,7 @@ body {
 
 .dropdown-title {
   flex: 1;
-  /* margin-top: 2px; */
-  /* height: 100%; */
   text-shadow: 3px 3px 3px #2a2a2a;
-  /* justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  text-align: center; */
 }
 
 .dropdown-icon {
@@ -477,11 +371,9 @@ body {
 .dropdown-list {
   position: absolute;
   top: 60%;
-  /* left: 0; */
   width: 100%;
   height: 400px;
   overflow-y: scroll;
-  /* overflow-x: auto; */
   border: 1px solid #414141;
   border-top: none;
   background-color: #282828;
@@ -492,14 +384,9 @@ body {
 
 .dropdown-item {
   display: flex;
-  /* justify-content: center; */
-  /* align-content: center; */
-  /* justify-items: center; */
   align-items: center;
   text-align: left;
   min-height: 35px;
-  /* padding: 5px; */
-  /* border-radius: 5px; */
   border-bottom: 3px solid #414141;
   background-color: rgb(46, 46, 46);
   cursor: pointer;
@@ -515,7 +402,6 @@ body {
   flex-direction: row;
   width: 100%;
   height: 100%;
-  /* align-items: center; */
 }
 
 .icon-grid-small {
@@ -527,7 +413,6 @@ body {
   position: absolute;
   right: 0px;
   align-self: center;
-  /* margin-top: 2px; */
   margin-right: 5px;
 }
 
@@ -540,26 +425,14 @@ body {
 .preset-picker {
   width: 100%;
   height: fit-content;
-  /* margin-top: 5px; */
   padding-top: 5px;
-  /* padding-bottom: 5px; */
 }
 
 .copy-palette-string {
   display: flex;
   font-size: 35px;
-  /* width: 200px;
-  height: 30px; */
-  /* justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  text-align: center; */
-  /* overflow: hidden; */
   margin-top: 15px;
-  /* border: 1px solid #414141; */
   text-shadow: 3px 3px 3px #2a2a2a;
-  /* background-color: #525252; */
   color: #b2b2b2;
 }
 
@@ -571,19 +444,14 @@ body {
   display: flex;
   font-size: 35px;
   flex: 1;
-  /* width: 200px;
-  height: 30px; */
   justify-content: center;
   align-content: center;
   justify-items: center;
   align-items: center;
   text-align: center;
-  /* overflow: hidden; */
   margin-top: 15px;
   margin-left: 60px;
-  /* border: 1px solid #414141; */
   text-shadow: 3px 3px 3px #2a2a2a;
-  /* background-color: #525252; */
   color: #b2b2b2;
 }
 
@@ -625,7 +493,6 @@ body {
 
 .control-panel {
   position: absolute;
-  /* top: 28px; */
   left: calc(50% - 125px);
   top: calc(25%);
   margin: 5px;
@@ -640,18 +507,11 @@ body {
   border-radius: 3px;
   align-self: center;
   justify-self: center;
-  /* justify-content: center; */
-  /* justify-self: center; */
-  /* align-items: center; */
-  /* align-content: center; */
-  /* z-index: 1; */
   opacity: 90%;
 }
 
 .control-panel-header {
-  /* flex: 1; */
   position: relative;
-  /* top: 0; */
   align-self: center;
   width: 60%;
   height: 25px;
@@ -660,7 +520,6 @@ body {
   border-bottom: 1px solid rgb(61, 61, 61);
   user-select: none;
   margin: 5px;
-  /* border-width: 75%; */
 }
 
 .settings-icon {
@@ -683,11 +542,9 @@ body {
 .dither-select-box {
   display: flex;
   flex-direction: row;
-  /* position: relative; */
   background-color: rgb(64, 64, 64);
   border-radius: 3px;
   font-size: 12px;
-  /* width: 100%; */
   margin: 5px;
   height: 45px;
   user-select: none;
@@ -696,7 +553,6 @@ body {
 }
 
 .dither-select {
-  /* display: flex; */
   position: relative;
   background-color: rgb(73, 73, 73);
   max-height: 25px;
@@ -721,10 +577,8 @@ body {
 .serpentine-box {
   display: flex;
   flex-direction: row;
-  /* position: relative; */
   background-color: rgb(64, 64, 64);
   font-size: 12px;
-  /* width: 100%; */
   margin: 5px;
   height: 35px;
   user-select: none;
@@ -738,20 +592,10 @@ body {
   margin: 5px;
 }
 
-/* .notification {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #05f7ff;
-  display: flex;
-} */
-
 #notification-container {
   position: absolute;
   top: 15px;
   left: (50% - 250px);
-  /* transform: translateX(-50%); */
   width: 500px;
   margin: 5px;
   z-index: 9999;

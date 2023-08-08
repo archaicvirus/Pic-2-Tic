@@ -1,6 +1,6 @@
 class DraggableWindow {
   constructor(imageSrc, name) {
-    this.imageIndexed = '';
+    this.imageIndexed = null;
     this.name = name;
     this.palette_string = '';
     this.scale = 1;
@@ -26,18 +26,26 @@ class DraggableWindow {
     //download image button
     this.download = document.createElement('a');
     this.download.classList.add('fa-solid');
-    this.download.classList.add('fa-file-export');
+    this.download.classList.add('fa-file-arrow-down');
     this.download.classList.add('copy-palette-button');
     this.download.title = 'Download current image';
     this.palette_div.appendChild(this.download);
     //copy pixel data button
-    this.copyPixelData = document.createElement('i');
-    this.copyPixelData.classList.add('fa-regular');
-    this.copyPixelData.classList.add('fa-clone');
-    this.copyPixelData.classList.add('copy-palette-button');
-    this.copyPixelData.title = 'Copy pixel data array';
+    this.copyPixelButton = document.createElement('i');
+    this.copyPixelButton.classList.add('fa-regular');
+    this.copyPixelButton.classList.add('fa-clone');
+    this.copyPixelButton.classList.add('copy-palette-button');
+    this.copyPixelButton.title = 'Copy pixel data array';
+    //copy sprite data function
+    this.copySpriteButton = document.createElement('i');
+    this.copySpriteButton.classList.add('fa-solid');
+    this.copySpriteButton.classList.add('fa-clone');
+    this.copySpriteButton.classList.add('copy-palette-button');
+    this.copySpriteButton.title = 'Copy sprite data';
+
+    this.palette_div.appendChild(this.copyPixelButton);
+    this.palette_div.appendChild(this.copySpriteButton);
     this.palette_div.appendChild(this.copy_palette_button);
-    this.palette_div.appendChild(this.copyPixelData);
     this.win_drag_bar.appendChild(this.drag_bar_text);
     this.draggableDiv.appendChild(this.win_drag_bar);
     //image window
@@ -62,7 +70,7 @@ class DraggableWindow {
     let offsetX = 0;
     let offsetY = 0;
 
-    this.copyPixelData.addEventListener('click', () => {
+    this.copyPixelButton.addEventListener('click', () => {
       let outputString = '{' + this.imageIndexed.join(',') + '}';
 
       navigator.clipboard.writeText(outputString).then(function () {
@@ -74,12 +82,66 @@ class DraggableWindow {
       });
     });
 
-    this.icon.addEventListener('click', () => {
-      this.controlPanel.open();
+    this.copySpriteButton.addEventListener('click', () => {
+      let width = this.imageSrc.naturalWidth;
+      let height = this.imageSrc.naturalHeight;
+      let tileWidth = 8;
+      let tileHeight = 8;
+      let sectionsPerRow = Math.ceil(width / tileWidth);
+      let sectionsPerCol = Math.ceil(height / tileHeight);
+      let tilemapWidth = 16;
+      let output = '';
+    
+      let paletteIndices = this.imageIndexed;
+    
+      for (let row = 0; row < sectionsPerCol; row++) {
+        for (let col = 0; col < sectionsPerRow; col++) {
+          if(col > 0 || row > 0){
+            output += '\n';
+          };
+          let x = col * tileWidth;
+          let y = row * tileHeight;
+          let tileIndex = row * tilemapWidth + col;
+          let tileIndexStr = tileIndex.toString().padStart(3, '0');
+          output += `-- ${tileIndexStr}:`;
+    
+          let tileData = '';
+    
+          for (let i = 0; i < tileHeight; i++) {
+            for (let j = 0; j < tileWidth; j++) {
+              let pixelX = x + j;
+              let pixelY = y + i;
+    
+              if (pixelX < width && pixelY < height) {
+                let pixelIndex = pixelY * width + pixelX;
+                let paletteIndex = paletteIndices[pixelIndex];
+    
+                if (typeof paletteIndex === 'number') {
+                  tileData += paletteIndex.toString(16);
+                } else {
+                  tileData += '0';
+                }
+              } else {
+                tileData += '0';
+              }
+            }
+          }
+          output += tileData;
+        }
+      }
+      output = output.trim();
+    
+      navigator.clipboard.writeText(output).then(function () {
+        console.log('Sprite data copied to clipboard successfully!' + output);
+        showNotification('Sprite data copied to clipboard successfully!', 5000);
+      }).catch(function (err) {
+        console.error('Could not copy sprite data to clipboard:', err);
+        showNotification('Could not copy sprite data to clipboard: ' + err, 5000);
+      });
     });
 
-    this.download.addEventListener('click', () => {
-      console.log('download');
+    this.icon.addEventListener('click', () => {
+      this.controlPanel.open();
     });
 
     this.copy_palette_button.addEventListener('click', (event) => {
@@ -139,20 +201,20 @@ class DraggableWindow {
 
   setImageSrc(src, name) {
     var opts = {
-      colors: 16,             // desired palette size
-      method: 2,               // histogram method, 2: min-population threshold within subregions; 1: global top-population
-      boxSize: [64,64],        // subregion dims (if method = 2)
-      boxPxls: 2,              // min-population threshold (if method = 2)
-      initColors: 4096,        // # of top-occurring colors  to start with (if method = 1)
-      minHueCols: 0,           // # of colors per hue group to evaluate regardless of counts, to retain low-count hues
-      dithKern: 'FloydSteinberg',          // dithering kernel name, see available kernels in docs below
-      dithDelta: 0,            // dithering threshhold (0-1) e.g: 0.05 will not dither colors with <= 5% difference
-      dithSerp: true,         // enable serpentine pattern dithering
-      palette: [],             // a predefined palette to start with in r,g,b tuple format: [[r,g,b],[r,g,b]...]
-      reIndex: false,          // affects predefined palettes only. if true, allows compacting of sparsed palette once target palette size is reached. also enables palette sorting.
-      useCache: true,          // enables caching for perf usually, but can reduce perf in some cases, like pre-def palettes
-      cacheFreq: 10,           // min color occurance count needed to qualify for caching
-      colorDist: "euclidean",  // method used to determine color distance, can also be "manhattan"
+      colors: 16,                 // desired palette size
+      method: 2,                  // histogram method, 2: min-population threshold within subregions; 1: global top-population
+      boxSize: [64,64],           // subregion dims (if method = 2)
+      boxPxls: 2,                 // min-population threshold (if method = 2)
+      initColors: 4096,           // # of top-occurring colors  to start with (if method = 1)
+      minHueCols: 0,              // # of colors per hue group to evaluate regardless of counts, to retain low-count hues
+      dithKern: 'FloydSteinberg', // dithering kernel name, see available kernels in docs below
+      dithDelta: 0,               // dithering threshhold (0-1) e.g: 0.05 will not dither colors with <= 5% difference
+      dithSerp: true,             // enable serpentine pattern dithering
+      palette: [],                // a predefined palette to start with in r,g,b tuple format: [[r,g,b],[r,g,b]...]
+      reIndex: false,             // affects predefined palettes only. if true, allows compacting of sparsed palette once target palette size is reached. also enables palette sorting.
+      useCache: true,             // enables caching for perf usually, but can reduce perf in some cases, like pre-def palettes
+      cacheFreq: 10,              // min color occurance count needed to qualify for caching
+      colorDist: "euclidean",     // method used to determine color distance, can also be "manhattan"
     };
     let originalElement = new Image();
     originalElement.src = src;
