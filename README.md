@@ -5,7 +5,7 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 
 ## To run the app
 - [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
-- Or download the source and host the index.html file
+- Or download the source folder and host it locally (run on your machine)
 - Written in pure javascript, html, and css.
 - Utilizes [RgbQuant.js](https://github.com/leeoniya/RgbQuant.js) for dithering, palette application, and palette retrieval.
 - I made this tool while developing [Craptorio](https://github.com/archaicvirus/Craptorio) a wip Factorio de-make for the TIC-80, then it occured to me that this could be useful to fellow TIC-80 developers/creators.
