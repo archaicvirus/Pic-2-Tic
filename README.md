@@ -93,6 +93,14 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 
 ![customizeColors](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/9d7c0792-106f-4057-8de3-cd4db79706d4)
 
+## Copy & Paste Palette from TIC80
+- Click the switch on the top left to enter advanced mode
+- Click the 3-sliders icon on the bottom right for edit palette mode
+- Click either of the two copy/paste buttons to copy or paste palette
+- Can copy & paste these palettes directly between TIC80 and Pic2Tic
+
+![copyPasteTic80](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/7b1e6e0a-8d82-4b26-a582-60deee4b16ef)
+
 
 
 ## Draw image function for TIC-80 in lua
@@ -116,3 +124,6 @@ function draw_image(x, y, width, height, pixel_data, color_key)
 - `color_key` - Transparency, eg. will not draw this color/palette index
 - For importing fullscreen images to TIC-80, `x, y` should be `0, 0` and `width, height` should be `240, 136` (TIC-80's screen resolution)
 - - Although with a custom draw function, you could import larger images, and have a method to pan the screen, to see images larger than 240x136 within TIC-80.
+
+## Legacy
+- For the old Pic2Tic, see the [Legacy](https://github.com/archaicvirus/Pic-2-Tic/tree/legacy) branch.
