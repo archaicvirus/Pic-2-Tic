@@ -3,10 +3,10 @@
 A web-app designed specifically to convert images for use with the TIC-80 fantasy console. The project is nearly complete albeit any bugs.
 
 ## To run the app
-- [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
-- Or, you can run the app locally by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
-- If you are new to VSC, after installing both, clone the src folder, open the folder with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will then open a new tab in your default browser, running the app. 
-- More experienced users feel free to serve the html however you see fit. Please note that I am not a professional web developer, and the code is sub-optimal.
+- **Note: this version is deprecated, and is no longer hosted on github pages
+- You can run the app locally by using [VS Code](https://visualstudio.microsoft.com/downloads/) and the [Live Server plugin](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). 
+- If you are new to VSC, after installing both, clone the src folder, open the FOLDER with vs code, then open the index.html file, and click "Go Live" on the bottom right. It will then open a new tab in your default browser, running the app. 
+- More experienced users feel free to serve the html however you see fit. Please note this older version is really slow with larger images, and has bugs. Use the newest version from the main branch instead for the best experience.
 - No 3rd party libs, written in pure javascript, html, and css.
 - I only made this tool for a personal need I have developing [Craptorio](https://github.com/archaicvirus/Craptorio) a Factorio de-make for the TIC-80, however it occured to me that this could be useful to fellow TIC-80 developers/creators. Criticism is welcome, so feel free to open a discussion or open a pull request if so inclined.
 
