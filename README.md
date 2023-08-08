@@ -1,23 +1,23 @@
 # Pic-2-Tic
 
-A web-app designed specifically to convert images for use with the TIC-80 fantasy console.
+A web-app designed specifically to convert images to 16-color format, for use with the TIC-80 fantasy console.
 
 ## To run the app
 - [Run the web app](https://archaicvirus.github.io/Pic-2-Tic/) - Hosted via github pages.
 - Or download the source and host the index.html file
 - Written in pure javascript, html, and css.
 - Utilizes [RgbQuant.js](https://github.com/leeoniya/RgbQuant.js) for dithering, palette application, and palette retrieval.
-- I made this tool while developing [Craptorio](https://github.com/archaicvirus/Craptorio) a wip Factorio de-make for the TIC-80, however it occured to me that this could be useful to fellow TIC-80 developers/creators.
+- I made this tool while developing [Craptorio](https://github.com/archaicvirus/Craptorio) a wip Factorio de-make for the TIC-80, then it occured to me that this could be useful to fellow TIC-80 developers/creators.
 
 ![palette_demo2](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/7d45f458-2ca3-45cd-8b02-fa57edcf6af6)
 
 ![palette_demo](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/c5654afd-5c4e-4e42-bdd0-08a7c6d42048)
 
 ## Features
-- Load any image and convert it's colors to the selected palette
+- Load any image, reduce it to 16-colors using a preset palette, or automagically.
 - Over 100+ palettes imported from [lospec](https://lospec.com/) included as presets
 - + Additional custom and retro computer palettes
-- Automatically creates a new palette based on image colors, for optional use
+- Automatically creates a new palette for each image, based on image colors, for optional use instead of presets.
 - Drag & drop images onto canvas to load, or click the '+' icon on the canvas
 - Operate on multiple images at once, with independant settings
 - Download image button
