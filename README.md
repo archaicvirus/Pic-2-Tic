@@ -60,4 +60,5 @@ function draw_image(x, y, width, height, pixel_data, color_key)
 - `width, height` - The natural width and height of the image in pixels
 - `pixel_data` - A lua table copied from 'copy pixel data' button
 - `color_key` - Transparency, eg. will not draw this color/palette index
-- For fullscreen images, `x, y` should be `0, 0` and `width, height` should be `240, 136` (TIC-80's screen resolution)
+- For importing fullscreen images to TIC-80, `x, y` should be `0, 0` and `width, height` should be `240, 136` (TIC-80's screen resolution)
+- - Although with a custom draw function, you could import larger images, and have a method to pan the screen, to see images larger than 240x136 within TIC-80.
