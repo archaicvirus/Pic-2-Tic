@@ -34,10 +34,20 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Notifications pop up and fade over time, indicating user actions
 - When pasting a custom palette using the clipboard button-icon, invalid palette strings are ignored, keeping the current palette.
 
+## Choose a Palette
+- Click on the 'Select Palette' button to toggle the dropdown list
+- You can also type here to search for a palette
+
+
+![paletteSearch](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/ea5bdb3a-e17f-4233-b745-2ec3d69e7f25)
+
+
+
 ## Image Settings
 - Here you can choose the dithering kernel, enable serpentine dithering pattern, and toggle using the image's natural palette instead of the preset.
 
-![settings2](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/f02c4ca5-e4b7-46ab-8659-345d30768f7d)
+![settings2](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/14a249c9-a8b7-488f-b264-180d44f7ec2b)
+
 
 ![settings](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/1cde7ac6-52ca-439b-9acd-ab8633b5174e)
 
@@ -45,6 +55,12 @@ A web-app designed to convert images to 16-color format, for use with the TIC-80
 - Downloads a copy of the currently displayed image
 
 ![downloadImage](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/ae3e7009-801f-496b-a99b-c43bf524f6c2)
+
+## Reset Image
+- Click to restore original image
+ 
+![resetImage](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/dfc865f1-b280-4435-b7dc-1b21d2fd2fc8)
+
 
 ## Copy Pixel Data
 ![copyPixel_data](https://github.com/archaicvirus/Pic-2-Tic/assets/25288625/451534be-5688-4494-ac90-8bb4c573971b)
