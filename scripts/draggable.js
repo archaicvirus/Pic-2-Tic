@@ -43,6 +43,13 @@ class DraggableWindow {
     this.copySpriteButton.classList.add('copy-palette-button');
     this.copySpriteButton.title = 'Copy sprite data';
 
+    this.resetButton = document.createElement('i');
+    this.resetButton.classList.add('fa-solid');
+    this.resetButton.classList.add('fa-rotate-left');
+    this.resetButton.classList.add('copy-palette-button');
+    this.resetButton.title = 'Reset Image';
+
+    this.palette_div.appendChild(this.resetButton);
     this.palette_div.appendChild(this.copyPixelButton);
     this.palette_div.appendChild(this.copySpriteButton);
     this.palette_div.appendChild(this.copy_palette_button);
@@ -69,6 +76,11 @@ class DraggableWindow {
     let isDragging = false;
     let offsetX = 0;
     let offsetY = 0;
+
+    this.resetButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.imageSrc.src = this.originalSrc.src;
+    });
 
     this.copyPixelButton.addEventListener('click', () => {
       let outputString = '{' + this.imageIndexed.join(',') + '}';
@@ -232,7 +244,7 @@ class DraggableWindow {
       this.drag_bar_text.innerText = `${name} - ${dimensions}`;
       
       if(!this.palette_bg_div) {
-        this.draggableDiv.style.width = `${width}px`;
+        this.draggableDiv.style.width = `${width/2}px`;
         this.contentDiv.style.height = height;
         this.quant = new RgbQuant(opts);
         this.quant.sample(imageElement, width);

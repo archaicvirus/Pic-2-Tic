@@ -8,14 +8,16 @@ const copyPasteDiv = document.createElement('div');
 const copyPaletteButton = document.createElement('div');
 const pastePaletteButton = document.createElement('div');
 const applyPaletteButton = document.createElement('div');
+// const undoButton = document.createElement('div');
+
 applyPaletteButton.classList.add('apply-palette');
 applyPaletteButton.innerText = 'Apply Palette';
 pastePaletteButton.title = 'Paste Palette';
-pastePaletteButton.classList.add('fa-regular');
+pastePaletteButton.classList.add('fa-solid');
 pastePaletteButton.classList.add('fa-clipboard');
 pastePaletteButton.classList.add('paste-palette-string');
 copyPaletteButton.title = 'Copy Palette String';
-copyPaletteButton.classList.add('fa-regular');
+copyPaletteButton.classList.add('fa-solid');
 copyPaletteButton.classList.add('fa-clone');
 copyPaletteButton.classList.add('copy-palette-string');
 var selectedColor = 0;
@@ -52,17 +54,31 @@ pastePaletteButton.addEventListener('click', (e) => {
   });
 });
 
-document.addEventListener("drop", (event) => {
+sidebar.addEventListener('drop', (e) => {e.preventDefault()});
+
+document.getElementById('draggableDivContainer').addEventListener("drop", (event) => {
   event.preventDefault();
   let files = event.dataTransfer.files;
+  let dropX = event.clientX - 230;
+  let dropY = event.clientY;
+  let cascadeOffsetX = 30;
+  let cascadeOffsetY = 30;
+  let offsetX = 0;
+  let offsetY = 0;
   for (let file of files) {
     if (file.type.startsWith("image/")) {
       let reader = new FileReader();
       reader.onload = (e) => {
         let newDraggable = createDraggableWindowWithImage(e.target.result, file.name);
+        newDraggable.draggableDiv.style.left = (dropX + offsetX) + "px";
+        newDraggable.draggableDiv.style.top = (dropY + offsetY) + "px";
+        offsetX += cascadeOffsetX;
+        offsetY += cascadeOffsetY;
         newDraggable.draggableDiv.addEventListener('mousedown', () => {
           for(let i = 0; i < dragDivs.length; i++){
-            dragDivs[i].draggableDiv.style.zIndex = 1;
+            if (dragDivs[i].draggableDiv.style.zIndex > 1){
+              dragDivs[i].draggableDiv.style.zIndex = 1;
+            };
           };
           newDraggable.draggableDiv.style.zIndex = 100;
         });

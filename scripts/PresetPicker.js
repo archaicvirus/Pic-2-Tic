@@ -3,6 +3,7 @@ class PresetPicker {
     this.currentPalette = '1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57';
     this.container = document.createElement('div');
     this.container.classList.add('preset-picker');
+    this.paletteItems = new Map();
     this.paletteElement = this.createPaletteElement();
     this.dropdownElement = this.createDropdownElement();
     this.isDropdownOpen = false;
@@ -16,6 +17,7 @@ class PresetPicker {
 
   createDropdownElement() {
     this.dropdown = document.createElement('div');
+    this.dropdown.setAttribute('data-id', 'dropdown-container');
     this.dropdown.id = 'dropdown';
     this.dropdown.classList.add('dropdown');
     this.dropdown.innerText = 'Select Palette';
@@ -28,21 +30,21 @@ class PresetPicker {
       this.handleDropdownToggle();
     });
 
-    this.dropdownHeader.addEventListener('focusout', (e) => { 
-      this.dropdownHeader.value = 'Select Palette';
-      console.log('clicked off search');
-      this.isDropdownOpen = false;
-      this.updateDropdownList(Presets);
-    });
+    // this.dropdownHeader.addEventListener('focusout', (e) => { 
+    //   this.dropdownHeader.value = 'Select Palette';
+    //   console.log('clicked off search');
+    //   this.isDropdownOpen = false;
+    //   this.updateDropdownList(Presets);
+    // });
 
     this.dropdownHeader.addEventListener('input', (e) => {
       console.log('typing - ' + this.dropdownHeader.value);
       if (this.dropdownHeader.value === '') {
         console.log('empty input');
-        this.updateDropdownList(Presets);
-      }else{
+        this.updateDropdownList();
+    } else {
         this.handleSearch(this.dropdownHeader.value);
-      }
+    }
     });
     this.dropdownIcon = document.createElement('span');
     this.dropdownIcon.classList.add('dropdown-icon');
@@ -58,22 +60,30 @@ class PresetPicker {
   setupDropdown() {
     this.container.appendChild(this.dropdownElement);
     document.addEventListener('click', (event) => {
-      if (!this.container.contains(event.target)) {
-        this.closeDropdown();
-      }
+        // Check if the click is outside the dropdown and its children
+        if (!event.target.closest('[data-id="dropdown-container"]')) {
+            this.closeDropdown();
+        }
     });
-  }
+}
+
 
   handleDropdownToggle() {
     this.isDropdownOpen = !this.isDropdownOpen;
     this.dropdownList.style.display = this.isDropdownOpen ? 'block' : 'none';
     this.dropdownIcon.classList.toggle('open', this.isDropdownOpen);
+    if (this.isDropdownOpen) {
+      this.dropdownHeader.focus();
+  } else {
+      this.closeDropdown();
+  }
   }
 
   handlePaletteChange(paletteName, paletteColors) {
+    console.log('palette changing');
     this.currentPalette = paletteColors;
     currentPalette = paletteColors;
-    document.getElementById('pal-title').innerText = paletteName;
+    document.getElementById('pal-title').innerText = paletteName.toString();
     palette.palette.paletteString = paletteColors;
     palette.palette.updateColors();
     this.closeDropdown();
@@ -83,6 +93,9 @@ class PresetPicker {
     this.isDropdownOpen = false;
     this.dropdownList.style.display = 'none';
     this.dropdownIcon.classList.remove('open');
+    this.dropdownHeader.value = 'Select Palette';
+    this.updateDropdownList();
+    this.dropdownHeader.blur();
   }
 
   getPresetPickerElement() {
@@ -90,28 +103,23 @@ class PresetPicker {
   }
 
   handleSearch(searchTerm) {
-    const matchedPalettes = {};
     searchTerm = searchTerm.toLowerCase().trim();
-    for (let [paletteName, paletteColors] of Object.entries(Presets)) {
+    this.paletteItems.forEach((listItem, paletteName) => {
       if (paletteName.toLowerCase().includes(searchTerm)) {
-        matchedPalettes[paletteName] = paletteColors;
+        listItem.style.display = "flex";
+      } else {
+        listItem.style.display = "none";
       }
-  }
-    console.log(matchedPalettes);
-    this.updateDropdownList(matchedPalettes);
+    });
   }
 
-  updateDropdownList(palettes) {
-    let searchList = this.createDropdownList(palettes);
-    if (this.dropdownList && this.dropdown.contains(this.dropdownList)) {
-      this.dropdown.removeChild(this.dropdownList);
-    }
-    this.dropdownList = searchList;
-    this.dropdown.appendChild(this.dropdownList);
-    if (this.isDropdownOpen) {
-      this.dropdownList.style.display = 'block';
-    }
-}
+
+  updateDropdownList() {
+    this.paletteItems.forEach(listItem => {
+      listItem.style.display = "flex";
+    });
+  }
+
 
   createDropdownList(palettes) {
     let root = document.createElement('ul');
@@ -136,6 +144,7 @@ class PresetPicker {
       }
     listItem.appendChild(paletteNameSpan);
     listItem.appendChild(iconGridSmall);
+    this.paletteItems.set(paletteName, listItem);
     root.appendChild(listItem);
     }
     return root
