@@ -132,6 +132,7 @@ function draw_image(x, y, width, height, pixel_data, color_key)
       end
     end
   end
+end
 ```
 
 - `x, y` - The x,y screen coordinates to draw the image
